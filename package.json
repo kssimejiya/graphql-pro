@@ -4,12 +4,16 @@
   "description": "",
   "main": "./src/index.js",
   "type": "module",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "scripts": {
     "start": "node ./src/index.js",
     "generate": "graphql-codegen",
     "prisma:generate": "prisma generate",
     "prisma:deploy": "prisma db push",
     "dev": "nodemon ./src/index.js",
+    "seed": "prisma db seed",
     "build": "npm install && npm run prisma:generate && npm run generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

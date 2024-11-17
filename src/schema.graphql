@@ -32,7 +32,34 @@ type Gif {
 
 scalar JSONObject
 
+type Category {
+  id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Font {
+  id: ID!
+  name: String!
+  style: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Color {
+  id: ID!
+  name: String!
+  hex: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+
 type Query {
+  categories: [Category!]!
+  fonts: [Font!]!
+  colors: [Color!]!
   users: [User!]!
   user(id: ID!): User
   posts: [Post!]!

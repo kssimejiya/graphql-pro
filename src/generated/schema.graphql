@@ -1,8 +1,31 @@
+type Category {
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  updatedAt: DateTime!
+}
+
+type Color {
+  createdAt: DateTime!
+  hex: String!
+  id: ID!
+  name: String!
+  updatedAt: DateTime!
+}
+
 scalar DateTime
 
 type DeleteResponse {
   message: String
   success: Boolean!
+}
+
+type Font {
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  style: String!
+  updatedAt: DateTime!
 }
 
 type Gif {
@@ -39,6 +62,9 @@ type Post {
 }
 
 type Query {
+  categories: [Category!]!
+  colors: [Color!]!
+  fonts: [Font!]!
   gif(id: ID!): Gif
   gifs: [Gif!]!
   post(id: ID!): Post
