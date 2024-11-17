@@ -48,10 +48,8 @@ async function startServer() {
 
   await server.start();
 
-  // Serve static files
   app.use('/uploads', express.static(join(process.cwd(), 'uploads')));
 
-  // GraphQL endpoint - Important: add express.json() middleware
   app.use(
     '/graphql',
     express.json(),
