@@ -1,0 +1,11 @@
+schema: "./src/schema.graphql"
+generates:
+  ./src/generated/schema.graphql:
+    plugins:
+      - schema-ast
+    config:
+      contextType: ../context#Context
+      mappers:
+        User: '@prisma/client#User as PrismaUser'
+        Post: '@prisma/client#Post as PrismaPost'
+        Gif: '@prisma/client#Gif as PrismaGif'

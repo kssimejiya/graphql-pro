@@ -1,0 +1,63 @@
+scalar Upload
+
+type User {
+  id: ID!
+  email: String!
+  name: String
+  image: String
+  posts: [Post!]!
+  gifs: [Gif!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Post {
+  id: ID!
+  title: String!
+  content: String
+  published: Boolean!
+  author: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Gif {
+  id: ID!
+  name: String!
+  content: JSONObject! 
+  author: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+scalar JSONObject
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+  posts: [Post!]!
+  post(id: ID!): Post
+  gifs: [Gif!]!
+  gif(id: ID!): Gif
+}
+
+type DeleteResponse {
+  success: Boolean!
+  message: String
+}
+
+type Mutation {
+  createUser(email: String!, name: String, image: Upload): User!
+  updateUserImage(id: ID!, image: Upload!): User!
+  createPost(title: String!, content: String, authorId: ID!): Post!
+  updatePost(id: ID!, published: Boolean): Post!
+  deleteUser(id: ID!): DeleteResponse!
+  deletePost(id: ID!): DeleteResponse!
+  
+  # New GIF mutations
+    createGif(name: String!, file: Upload!, authorId: ID!): Gif!
+  updateGif(id: ID!, name: String, content: JSONObject): Gif!
+  deleteGif(id: ID!): DeleteResponse
+}
+
+scalar DateTime
